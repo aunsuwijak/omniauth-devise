@@ -5,7 +5,7 @@ omniauth-devise
 
 ```	$ rails generate devise:install
 	$ rails generate devise users
-```
+
 2. install omniauth-facebook gem the same way as devise
   
    add uid and provider to users by create migration file
@@ -30,12 +30,11 @@ omniauth-devise
    	    end
  	  end		
 	end
-```
+
 4. add from_omniauth method in app/models/users.rb
 ```	def self.from_omniauth(auth)
  	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
    	    user.email = auth.info.email
    	    user.password = Devise.friendly_token[0,20]
     	  end
-	end
-```		
+	end		
