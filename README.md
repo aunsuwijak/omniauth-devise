@@ -17,7 +17,8 @@ omniauth-devise
    add ":omniauthable" and ":omniauth_providers => [:facebook]"
 
 3. create "omniauth_callbacks_controller.rb" in "app/controllers/users"
-```	class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+```
+	class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	  def facebook
 	    @user = User.from_omniauth(request.env["omniauth.auth"])
 
@@ -32,7 +33,8 @@ omniauth-devise
 	end
 ```
 4. add from_omniauth method in app/models/users.rb
-```	def self.from_omniauth(auth)
+```	
+	def self.from_omniauth(auth)
  	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
    	    user.email = auth.info.email
    	    user.password = Devise.friendly_token[0,20]
