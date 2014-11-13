@@ -3,8 +3,8 @@ omniauth-devise
 
 1. install devise gem by add gem 'devise' to Gemfile
 
-*	$ rails generate devise:install
-*	$ rails generate devise users
+	$ rails generate devise:install
+	$ rails generate devise users
 
 2. install omniauth-facebook gem the same way as devise
   
@@ -18,7 +18,7 @@ omniauth-devise
 
 3. create "omniauth_callbacks_controller.rb" in "app/controllers/users"
 
-	class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+>	class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	  def facebook
 	    @user = User.from_omniauth(request.env["omniauth.auth"])
 
